@@ -1,0 +1,24 @@
+jms:
+  receiver:
+    provider-url: t3://localhost:7001
+    jndi-factory: weblogic.jndi.WLInitialContextFactory
+    jndi-name: jms.external.CommonConnectionFactory
+    max-consumers-count: 4
+    min-consumers-count: 2
+    destination: dynamicQueues/receiver
+    timeout: 3000
+    username: jms-account
+    password: hell0w0rld
+
+  distributor:
+    provider-url: t3://localhost:7001
+    jndi-factory: weblogic.jndi.WLInitialContextFactory
+    jndi-name: jms.external.CommonConnectionFactory
+    max-consumers-count: 4
+    min-consumers-count: 2
+    destinations:
+      - dynamicQueues/distribution-one
+      - dynamicQueues/distribution-two
+    timeout: 3000
+    username: jms-account
+    password: hell0w0rld

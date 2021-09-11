@@ -1,0 +1,24 @@
+jms:
+  receiver:
+    provider-url: tcp://localhost:61616
+    jndi-factory: org.apache.activemq.jndi.ActiveMQInitialContextFactory
+    jndi-name: QueueConnectionFactory
+    max-consumers-count: 4
+    min-consumers-count: 2
+    destination: dynamicQueues/receiver
+    timeout: 3000
+    username: admin
+    password: admin
+
+  distributor:
+    provider-url: tcp://localhost:61616
+    jndi-factory: org.apache.activemq.jndi.ActiveMQInitialContextFactory
+    jndi-name: QueueConnectionFactory
+    max-consumers-count: 4
+    min-consumers-count: 2
+    destinations:
+      - dynamicQueues/distribution-one
+      - dynamicQueues/distribution-two
+    timeout: 3000
+    username: admin
+    password: admin
